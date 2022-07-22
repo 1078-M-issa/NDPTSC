@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NDPTSC</string>
+    <string name="H1">SONG TITLE</string>
+    <string name="H2">Year RELEASE</string>
+    <string name="H3">SONG ARTIST</string>
+    <string name="BN1">INSERT</string>
+    <string name="BN2">SHOW LIST</string>
+    <string name="BN3">SHOW ALL LIST</string>
+</resources>
