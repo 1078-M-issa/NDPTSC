@@ -23,6 +23,7 @@ public class ViewList extends AppCompatActivity {
     ArrayList<Song> al2;
     ArrayAdapter<String> aa;
     TextView textView;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,31 +31,29 @@ public class ViewList extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         B = findViewById(R.id.bVL);
-        lv = findViewById(R.id.VL);
+        lv = findViewById(R.id.listView);
         al = new ArrayList<>();
         al2 = new ArrayList<>();
         aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al);
-        lv.setAdapter(aa);
-        textView = findViewById(R.id.TV);
+        lv.setAdapter(adapter);
+        adapter = new CustomAdapter(this, R.layout.row, al2);
 
         B.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 DBhelp dbh = new DBhelp(ViewList.this);
-                al.clear();
-                String txt = " ";
+                al2.clear();
                 ArrayList<Song> list = dbh.getAllSongs();
                 for (int i = 0; i < list.size(); i++ ) {
                     al.add(list.get(i).toStringClass());
+                    al2.add(list.get(i));
 
                 }
 
 
-                lv.setAdapter(aa);
-
-
-                aa.notifyDataSetChanged();
+                //lv.setAdapter(aa);
+                lv.setAdapter(adapter);
                 }
 
 
